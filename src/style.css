@@ -41,10 +41,12 @@
     opacity: 2px;
   }
   h1 .realtemperature {
+    font-size: 40px;
     text-align: left;
     display: relative;
     color: orange;
   }
+ 
   
   li {
     color: steelblue;
@@ -56,32 +58,20 @@
     display: relative;
   }
   
-  h1 .realticon {
-    text-align: left;
-    line-height: 1;
-    color: orange;
-  }
-  
-  .fahrenheit {
+
+  h1 .unit {
     text-align: left;
     color: orange;
-    font-size: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    top: -34px;
+    
   }
   
-  .celsius {
-    text-align: left;
-    color: orange;
-    font-size: 10px;
-  }
-  
-  .hour {
-    font-weight: 400;
-    font-size: 20px;
-    text-align: center;
-  }
   .shortprediction {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
     color: green;
     display: flex;
     flex-direction: column;

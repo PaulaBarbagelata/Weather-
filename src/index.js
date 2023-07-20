@@ -59,23 +59,25 @@ function getDate() {
   
   function showWeather(response) {
     
-    document.querySelector("#city").innerHTML = response.data.city;
-   
+    
+    document.querySelector("#city").innerHTML = `${response.data.city},`;
+    document.querySelector("#country").innerHTML= response.data.country;
     document.querySelector("#real-temperature").innerHTML = Math.round(
      response.data.temperature.current
     );
   
-   
+    
     document.querySelector("#humidity").innerHTML = response.data.temperature.humidity;
     document.querySelector("#wind").innerHTML = Math.round(
       response.data.wind.speed
     );
     document.querySelector("#description").innerHTML =
       response.data.condition.description;
-      console.log(response); 
-
+      
      let iconElement= document.querySelector("#icon")
      iconElement.setAttribute("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`) 
+
+     
     }
   
   function searchApis(inputCity) {
