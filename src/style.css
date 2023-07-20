@@ -42,7 +42,7 @@
   }
   h1 .realtemperature {
     text-align: left;
-  
+    display: relative;
     color: orange;
   }
   
@@ -53,6 +53,7 @@
     height: 19px;
     padding: 10px;
     list-style: none;
+    display: relative;
   }
   
   h1 .realticon {
