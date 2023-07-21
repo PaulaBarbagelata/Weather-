@@ -89,8 +89,25 @@ function getDate() {
     axios.get(apiUrl).then(showWeather);
   }
   
+  function currentposition(position) {
+    let lon = position.coords.longitude;
+    let lat = position.coords.latitude;
+    let apiKey = "c8b24acb0feab485c6f630f018577toc";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  
+    axios.get(apiUrl).then(showWeather);
+  }
+
+  function currentPositionClick(event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(currentposition);
+  }
+    let locate = document.querySelector("#gps");
+locate.addEventListener("click", currentPositionClick);
+
   function handleSubmit(event) {
     event.preventDefault();
+
     let city = document.querySelector("#search-city-input").value;
     searchApis(city);
   }
