@@ -76,10 +76,13 @@ function getDate() {
       
      let iconElement= document.querySelector("#icon")
      iconElement.setAttribute("src",`http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`) 
-
+     
+      celsiusTemperature = response.data.temperature.current;
+  
      
     }
-  
+    
+
   function searchApis(inputCity) {
     let apiKey = "c8b24acb0feab485c6f630f018577toc";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${inputCity}&key=${apiKey}&units=metric`;
@@ -95,3 +98,27 @@ function getDate() {
   let form = document.querySelector("#searchCity");
   form.addEventListener("submit", handleSubmit);
   
+  function showFarenheitTemp (event) {
+    event.preventDefault();
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let farenheitTemp = (celsiusTemperature*9/5) + 32
+    let realtemperatureElement = document.querySelector("#real-temperature");
+    realtemperatureElement.innerHTML = Math.round(farenheitTemp);
+  }
+
+  function showCelsiusTemp (event) {
+event.preventDefault();
+fahrenheitLink.classList.remove("active");
+celsiusLink.classList.add("active");
+let realtemperatureElement = document.querySelector("#real-temperature");
+realtemperatureElement.innerHTML = Math.round(celsiusTemperature);
+  }
+  
+  celsiusTemperature= null
+
+  let celsiusLink= document.querySelector("#celsius-link");
+  celsiusLink.addEventListener("click", showCelsiusTemp);
+
+  let fahrenheitLink= document.querySelector("#fahrenheit-link");
+  fahrenheitLink.addEventListener("click", showFarenheitTemp);
