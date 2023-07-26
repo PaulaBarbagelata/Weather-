@@ -56,7 +56,12 @@ function getDate() {
   //}
   
   //
-  
+  function getForecast(coordinates){
+    console.log(coordinates)
+    let apiKey = "c8b24acb0feab485c6f630f018577toc";
+    let apiUrl =`https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`
+    axios.get(apiUrl).then(displayForecast);
+  }
   function showWeather(response) {
     
     
@@ -79,6 +84,7 @@ function getDate() {
      
       celsiusTemperature = response.data.temperature.current;
   
+      getForecast(response.data.coordinates)
      
     }
     
@@ -97,6 +103,8 @@ function getDate() {
   
     axios.get(apiUrl).then(showWeather);
   }
+
+
 
   function currentPositionClick(event) {
     event.preventDefault();
@@ -139,3 +147,67 @@ realtemperatureElement.innerHTML = Math.round(celsiusTemperature);
 
   let fahrenheitLink= document.querySelector("#fahrenheit-link");
   fahrenheitLink.addEventListener("click", showFarenheitTemp);
+
+  function displayShortForecast() {
+    let shortforecastElement = document.querySelector("#shortforecast");
+    let shortforecastHTML = ` <div class="row">`;
+  
+    let hours = ["20", "22", "00", "02", "04"];
+  
+    hours.forEach(function (hour) {
+      shortforecastHTML += `
+        <div class="hour col" ${hour}>
+          ${hour} hs
+          <div class="h-temperature">
+            23°
+          </div>
+        </div>`;
+    });
+  
+    shortforecastHTML += `
+      </div>
+      <hr />
+      <br/>`;
+  
+    shortforecastElement.innerHTML = shortforecastHTML;
+  }
+  
+//LONG
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = ` <div class="row">`;
+
+  forecast.forEach(function (forecastday, index) {
+    if (index < 5) {
+    let minTemp = forecastday.temperature.minimum || "N/A";
+    let maxTemp = forecastday.temperature.maximum || "N/A";
+
+    forecastHTML += `
+      <div class="prediction col">
+        ${formatDay(forecastday.time)}
+        <br/>
+     
+        <img src="${forecastday.condition.icon_url}" alt="${forecastday.condition.description}">
+        <div class="row">
+          <div class="col">
+            <span>${Math.round(minTemp)}</span> / <span>${Math.round(maxTemp)}</span>
+          </div>
+        </div>
+      </div>`;
+    }
+  });
+
+  forecastHTML += `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+  
+   displayShortForecast()
+  displayForecast();
