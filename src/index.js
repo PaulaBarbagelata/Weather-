@@ -123,31 +123,7 @@ locate.addEventListener("click", currentPositionClick);
   let form = document.querySelector("#searchCity");
   form.addEventListener("submit", handleSubmit);
   
-  function showFarenheitTemp (event) {
-    event.preventDefault();
-    celsiusLink.classList.remove("active");
-    fahrenheitLink.classList.add("active");
-    let farenheitTemp = (celsiusTemperature*9/5) + 32
-    let realtemperatureElement = document.querySelector("#real-temperature");
-    realtemperatureElement.innerHTML = Math.round(farenheitTemp);
-  }
-
-  function showCelsiusTemp (event) {
-event.preventDefault();
-fahrenheitLink.classList.remove("active");
-celsiusLink.classList.add("active");
-let realtemperatureElement = document.querySelector("#real-temperature");
-realtemperatureElement.innerHTML = Math.round(celsiusTemperature);
-  }
   
-  celsiusTemperature= null
-
-  let celsiusLink= document.querySelector("#celsius-link");
-  celsiusLink.addEventListener("click", showCelsiusTemp);
-
-  let fahrenheitLink= document.querySelector("#fahrenheit-link");
-  fahrenheitLink.addEventListener("click", showFarenheitTemp);
-
   function displayShortForecast() {
     let shortforecastElement = document.querySelector("#shortforecast");
     let shortforecastHTML = ` <div class="row">`;
@@ -179,12 +155,14 @@ function formatDay(timestamp) {
   return days[date.getDay()];
 }
 function displayForecast(response) {
+  
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = ` <div class="row">`;
 
-  forecast.forEach(function (forecastday, index) {
+  forecast.forEach(function (forecastday, index) 
+ {
     if (index < 5) {
     let minTemp = forecastday.temperature.minimum || "N/A";
     let maxTemp = forecastday.temperature.maximum || "N/A";
@@ -197,11 +175,12 @@ function displayForecast(response) {
         <img src="${forecastday.condition.icon_url}" alt="${forecastday.condition.description}">
         <div class="row">
           <div class="col">
-            <span>${Math.round(minTemp)}</span> / <span>${Math.round(maxTemp)}</span>
+            <span class="min-temp">${Math.round(minTemp)}°</span> / <span class="max-temp">${Math.round(maxTemp)}</span>°
           </div>
         </div>
       </div>`;
     }
+    
   });
 
   forecastHTML += `</div>`;
