@@ -124,30 +124,7 @@ locate.addEventListener("click", currentPositionClick);
   form.addEventListener("submit", handleSubmit);
   
   
-  function displayShortForecast() {
-    let shortforecastElement = document.querySelector("#shortforecast");
-    let shortforecastHTML = ` <div class="row">`;
-  
-    let hours = ["20", "22", "00", "02", "04"];
-  
-    hours.forEach(function (hour) {
-      shortforecastHTML += `
-        <div class="hour col" ${hour}>
-          ${hour} hs
-          <div class="h-temperature">
-            23°
-          </div>
-        </div>`;
-    });
-  
-    shortforecastHTML += `
-      </div>
-      <hr />
-      <br/>`;
-  
-    shortforecastElement.innerHTML = shortforecastHTML;
-  }
-  
+
 //LONG
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);

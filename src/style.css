@@ -34,17 +34,20 @@
   }
   h1 .date {
     font-size: 15px;
+    font-weight: lighter;
   }
   
   h1 .description {
-    font-size: 15px;
-    opacity: 2px;
+    font-size: 17px;
+    opacity: 0.6px;
+    font-weight:normal;
+    
   }
   h1 .realtemperature {
     font-size: 40px;
     text-align: left;
     display: relative;
-    color: orange;
+    color: steelblue;
   }
  
   
@@ -63,20 +66,10 @@
     text-align: left;
     position: relative; 
     
-    color: orange;
+    color: steelblue;
     font-size: 15px;
    top:  -16px; 
     
-  }
-  
-
-  .shortprediction {
-    font-size: 20px;
-    font-weight: 400;
-    text-align: center;
-    color: green;
-    display: flex;
-    flex-direction: column;
   }
   
   .prediction-container {
