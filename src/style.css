@@ -5,11 +5,13 @@
   
   .full-container {
     border: steelblue solid 5px;
-    padding: 30px;
+    padding: 10px;
     padding-top: 10px;
+  
+   
   }
   .container {
-    border: rgb(141, 164, 182) solid 2px;
+   
     padding: 30px;
     padding-top: 1px;
     text-align: center;
@@ -31,7 +33,7 @@
     position: relative;
   
     align-content: space-between;
-    border: paleturquoise solid 3px;
+    border: rgb(141, 164, 182) solid 2px;
   }
   h1 .date {
     font-size: 15px;
