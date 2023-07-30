@@ -24,6 +24,7 @@
   h1 {
     text-align: center;
     color: purple;
+    opacity: 0.8;
     margin: 0 auto;
     padding: 10px;
     font-weight: bold;
@@ -37,6 +38,7 @@
     font-weight: lighter;
   }
   
+ 
   h1 .description {
     font-size: 17px;
     opacity: 0.6px;
@@ -61,17 +63,16 @@
     display: relative;
   }
   
-
+ 
   h1 .unit {
     text-align: left;
     position: relative; 
-    
     color: steelblue;
     font-size: 15px;
    top:  -16px; 
     
   }
-  
+ 
   .prediction-container {
     text-align: center;
     font-size: 25px;

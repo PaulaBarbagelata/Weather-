@@ -164,6 +164,6 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-  
+searchApis("Paris");
    displayShortForecast()
   displayForecast();
